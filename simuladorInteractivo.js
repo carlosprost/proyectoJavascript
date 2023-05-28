@@ -1,22 +1,33 @@
-let tna = 0.91;
-let tnm = (tna * 30) / 365;
-let tea = (1 + tna / 12) ** 12 - 1;
+class Tasas {
+  constructor(tna) {
+    this.tna = tna;
+    this.tnm = (this.tna * 30) / 365;
+    this.tea = (1 + this.tna / 12) ** 12 - 1;
+  }
+}
+
+let tasas = new Tasas(0.97);
 
 let usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
-while (usuario != "Salir") {
+let usuariosPermitidos = ["Juan", "Pedro", "Maria", "Lucas", "Ana", "Carlos"];
+
+if (usuario == "Salir") {
+  console.log("Servicio finalizado");
+} else if (!usuariosPermitidos.includes(usuario)) {
+  while (!usuariosPermitidos.includes(usuario)) {
+    console.log("El usuario no está permitido");
+    usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
+  }
+}
+
+while (usuariosPermitidos.includes(usuario)) {
   let monto = parseInt(prompt("Ingrese el monto a invertir"));
   let plazo = parseInt(
     prompt("Ingrese el plazo fijo\n1) 30 días\n2) 60 días\n3) 90 días")
   );
   bienvenida(usuario);
-  let edad = parseInt(prompt("Ingrese su edad"));
-
-  if (edad >= 18) {
-    iniciarCalculoPlazoFijo(monto, plazo);
-    break;
-  } else {
-    console.log("La operación no puede hacerse, el usuario es menor de edad");
-  }
+  iniciarCalculoPlazoFijo(monto, plazo);
+  break;
 }
 despedida(usuario);
 
@@ -47,7 +58,7 @@ function calcularGananciaConInteres(monto, plazo) {
 }
 
 function interes(plazo) {
-  return tnm * plazo;
+  return tasas.tnm * plazo;
 }
 
 function obtenerPlazo(plazo) {
@@ -77,14 +88,18 @@ function bienvenida(user) {
 
   console.log(
     "TNA:",
-    (tna * 100).toFixed(2) + "%,",
+    (tasas.tna * 100).toFixed(2) + "%,",
     "TNM: ",
-    (tnm * 100).toFixed(2) + "%,",
+    (tasas.tnm * 100).toFixed(2) + "%,",
     "TEA: ",
-    (tea * 100).toFixed(2) + "%"
+    (tasas.tea * 100).toFixed(2) + "%"
   );
 }
 
 function despedida(user) {
-  console.log("\nGracias por utilizar el simulador " + user);
+  if (user == "Salir") {
+    console.log("\nGracias por utilizar el simulador ");
+  } else {
+    console.log("\nGracias por utilizar el simulador " + user);
+  }
 }
