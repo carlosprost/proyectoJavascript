@@ -18,7 +18,6 @@ if (usuario == "Salir") {
     console.log("El usuario no está permitido");
     usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
   }
-  continue;
 }
   
   
