@@ -18,13 +18,13 @@ if (usuario == "Salir") {
     console.log("El usuario no está permitido");
     usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
   }
+}else{
+  let monto = parseInt(prompt("Ingrese el monto a invertir"));
+  let plazo = parseInt(prompt("Ingrese el plazo fijo\n1) 30 días\n2) 60 días\n3) 90 días"));
+  bienvenida(usuario);
+  iniciarCalculoPlazoFijo(monto, plazo);
+  despedida(usuario);
 }
-
-let monto = parseInt(prompt("Ingrese el monto a invertir"));
-let plazo = parseInt(prompt("Ingrese el plazo fijo\n1) 30 días\n2) 60 días\n3) 90 días"));
-bienvenida(usuario);
-iniciarCalculoPlazoFijo(monto, plazo);
-despedida(usuario);
 
 function iniciarCalculoPlazoFijo(monto, plazo) {
   if (esMontoYPlazoValidos(monto, plazo)) {
