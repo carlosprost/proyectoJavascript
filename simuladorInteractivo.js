@@ -20,15 +20,10 @@ if (usuario == "Salir") {
   }
 }
 
-while (usuariosPermitidos.includes(usuario)) {
-  let monto = parseInt(prompt("Ingrese el monto a invertir"));
-  let plazo = parseInt(
-    prompt("Ingrese el plazo fijo\n1) 30 días\n2) 60 días\n3) 90 días")
-  );
-  bienvenida(usuario);
-  iniciarCalculoPlazoFijo(monto, plazo);
-  break;
-}
+let monto = parseInt(prompt("Ingrese el monto a invertir"));
+let plazo = parseInt(prompt("Ingrese el plazo fijo\n1) 30 días\n2) 60 días\n3) 90 días"));
+bienvenida(usuario);
+iniciarCalculoPlazoFijo(monto, plazo);
 despedida(usuario);
 
 function iniciarCalculoPlazoFijo(monto, plazo) {
