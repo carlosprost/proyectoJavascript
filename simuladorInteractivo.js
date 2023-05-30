@@ -15,8 +15,14 @@ if (usuario == "Salir") {
   console.log("Servicio finalizado");
 } else if (!usuariosPermitidos.includes(usuario)) {
   while (!usuariosPermitidos.includes(usuario)) {
-    console.log("El usuario no está permitido");
-    usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
+    if(count < 4){
+      console.log("El usuario no está permitido");
+      usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
+      count +=1;
+    }else{
+      console.log('Ha agotado los intentos, comuniquese con banco');
+      break;
+    }
   }
 }
   
