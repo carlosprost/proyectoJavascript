@@ -10,7 +10,7 @@ let tasas = new Tasas(0.97);
 
 let usuario = prompt('Ingrese su nombre o "Salir" para finalizar');
 let usuariosPermitidos = ["Juan", "Pedro", "Maria", "Lucas", "Ana", "Carlos"];
-
+let count = 1;
 if (usuario == "Salir") {
   console.log("Servicio finalizado");
 } else if (!usuariosPermitidos.includes(usuario)) {
