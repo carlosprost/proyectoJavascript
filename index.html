@@ -4,9 +4,135 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Primera pre-entrega - Carlos Prost</title>
   </head>
   <body>
-    <script src="./simuladorInteractivo.js"></script>
+    <header>
+      <nav>
+        <div>
+          <button type="button" class="btn btn-logout" id="logout">
+            Cerrar Sesión
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="login" id="seccion-login">
+      <div class="contenido-login">
+        <div class="titulo">
+          <h2>Bienvenido</h2>
+        </div>
+        <div class="form">
+          <form method="post" id="login">
+            <div class="input">
+              <label for="user">Usuario</label>
+              <input type="text" name="user" id="user" />
+            </div>
+            <div class="subtexto">
+              <span id="sub-mensaje">Coloque su nombre de usuario</span>
+            </div>
+            <div class="button">
+              <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="datosTasas ocultar">
+        <div class="bienvenida"></div>
+        <div class="tasas"></div>
+      </section>
+      <section class="simulador">
+        <div class="titulo-simulador">
+          <h1>Simulador de plazo fijo</h1>
+        </div>
+        <div class="simulador__container">
+          <div class="simulador__container__form">
+            <form method="post" id="simulador">
+              <div class="row">
+                <label for="cuentaSeleccion">Cuenta</label>
+                <select name="cuentaSeleccion" id="cuentaSeleccion"></select>
+              </div>
+
+              <div class="row">
+                <label for="saldo">Saldo</label>
+                <input type="text" name="saldo" id="saldo" disabled />
+              </div>
+              <div class="row">
+                <label for="monto">Monto</label>
+                <input type="text" name="monto" id="monto" value="1000" />
+              </div>
+              <div class="row">
+                <label for="plazo">Plazo</label>
+                <div class="range-step ocultar">
+                  <input
+                    value="1"
+                    type="range"
+                    max="3"
+                    min="1"
+                    step="1"
+                    list="ticks1"
+                    id="plazo"
+                  />
+                  <datalist id="ticks1">
+                    <option value="1">30</option>
+                    <option value="2">60</option>
+                    <option value="3">90</option>
+                  </datalist>
+                </div>
+              </div>
+              <div class="row btn-container">
+                <button type="submit" class="btn-simulador">
+                  Generar Plazo Fijo
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="simulador__container__result">
+            <div class="contenido-row">
+              <div>
+                <label for="montoInicial">Monto inicial</label>
+              </div>
+              <div>
+                <span>$</span>
+                <span id="montoInicial">0</span>
+              </div>
+            </div>
+            <div class="contenido-row">
+              <div>
+                <label for="montoInteres">Intereses</label>
+              </div>
+              <div>
+                <span>$</span>
+                <span id="montoInteres">0</span>
+              </div>
+            </div>
+            <div class="contenido-row">
+              <div>
+                <label for="montoNeto">Neto a cobrar</label>
+              </div>
+              <div>
+                <span>$</span>
+                <span id="montoNeto">0</span>
+              </div>
+            </div>
+            <div class="contenido-row">
+              <div>
+                <label for="plazoDias">Plazo</label>
+              </div>
+              <div>
+                <span id="plazoDias">0</span>
+                <span>días</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/simuladorInteractivo.js"></script>
   </body>
 </html>
