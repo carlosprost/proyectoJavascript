@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 header {
   width: 100vw;
   height: 60px;
@@ -358,7 +362,6 @@ main .simulador .simulador__container .simulador__container__result {
   justify-content: flex-start;
   align-items: center;
   border-left: solid green;
-  
 }
 
 main
@@ -376,7 +379,6 @@ main
   border: 1px solid green;
   margin: 5px 0;
   border-radius: 10px;
-  
 }
 
 main .datosTasas {
@@ -400,6 +402,36 @@ main .datosTasas .bienvenida {
 }
 
 main .datosTasas .tasas {
+  width: 100%;
+  height: 150px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main .datosDolar {
+  width: 300px;
+  height: 200px;
+  border: 1px solid green;
+  position: absolute;
+  top: 63px;
+  left: 3%;
+}
+
+main .datosDolar .tituloDolar {
+  width: 100%;
+  height: 50px;
+  background-color: green;
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .datosDolar .dolar {
   width: 100%;
   height: 150px;
   font-size: 1.5rem;

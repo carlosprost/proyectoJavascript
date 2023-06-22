@@ -159,6 +159,7 @@ function iniciarApp() {
   ocultarLogin();
   generarSimulador();
   cuadroDeTasas();
+  cuadroDolar();
   range();
   seleccionCuenta();
   saldoCuenta();
@@ -172,10 +173,12 @@ function userValido(user) {
 function ocultarLogin() {
   const div = $(".range-step");
   const datosTasa = $(".datosTasas");
+  const datosDolar = $(".datosDolar");
 
   seccionLogin.classList.toggle("ocultar");
   div.classList.toggle("ocultar");
   datosTasa.classList.toggle("ocultar");
+  datosDolar.classList.toggle("ocultar");
 }
 
 function mensajeUserIncorrecto(user) {
@@ -242,6 +245,19 @@ function saldoCuenta() {
 
 /* Fin Style y Login */
 
+/* Fetch */
+
+async function dolarHoy() {
+  const response = await fetch(
+    "https://www.dolarsi.com/api/api.php?type=dolar"
+  );
+  const result = await response.text();
+  const data = JSON.parse(result);
+  return data;
+}
+
+/* Fin Fetch */
+
 /* Simulador */
 function generarSimulador() {
   simulador = new Simulador();
@@ -249,6 +265,29 @@ function generarSimulador() {
   simulador.setCliente(
     cuentas.find((cuenta) => cuenta.user == userActive.user)
   );
+}
+
+async function cuadroDolar() {
+  let titulo = $(".tituloDolar");
+  let cuadroDolar = $(".dolar");
+  let dolar = await dolarHoy();
+
+  let tituloDolar = document.createElement("h2");
+  tituloDolar.textContent = `Dólar ${dolar[0].casa.nombre}`;
+  titulo.appendChild(tituloDolar);
+
+  let compra = textoDolar("Compra", dolar[0].casa.compra);
+  cuadroDolar.appendChild(compra);
+
+  let venta = textoDolar("Venta", dolar[0].casa.venta);
+  cuadroDolar.appendChild(venta);
+}
+
+function textoDolar(nombreDolar, dolar) {
+  let dolarTexto = document.createElement("p");
+  let valor = dolar.replace(".", ",");
+  dolarTexto.textContent = `${nombreDolar}: $${valor}`;
+  return dolarTexto;
 }
 
 function cuadroDeTasas() {
