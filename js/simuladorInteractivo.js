@@ -370,11 +370,23 @@ function generarPlazoFijo() {
     e.preventDefault();
 
     if (cuenta.value == 0) {
-      alert("Seleccione una cuenta");
+      swal({
+        title: "Seleccione una cuenta",
+        text: "Debe seleccionar una cuenta para realizar esta operación",
+        icon: "warning",
+      });
     } else if (saldo.value < monto.value) {
-      alert("No tiene saldo suficiente");
+      swal({
+        title: "No tiene saldo suficiente",
+        text: "Su saldo es insuficiente para realizar esta operación",
+        icon: "error",
+      });
     } else {
-      alert("Plazo fijo generado");
+      swal({
+        title: "Plazo fijo generado",
+        text: "Su plazo fijo se generó correctamente",
+        icon: "success",
+      });
     }
   });
 }
