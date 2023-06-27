@@ -375,7 +375,7 @@ function generarPlazoFijo() {
         text: "Debe seleccionar una cuenta para realizar esta operación",
         icon: "warning",
       });
-    } else if (saldo.value < monto.value) {
+    } else if (parseInt(saldo.value) < parseInt(monto.value)) {
       swal({
         title: "No tiene saldo suficiente",
         text: "Su saldo es insuficiente para realizar esta operación",
